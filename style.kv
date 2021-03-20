@@ -1,0 +1,75 @@
+#:import utils kivy.utils
+
+Screen:
+    FloatLayout:
+        id: status
+        orientation: 'vertical'
+        FitImage:
+            id: photo
+            source: 'antichrist.jpg'
+
+        MDLabel:
+            id: title
+            pos_hint: {"center_x": 0.5, "center_y": 0.8}
+            text: "[color=#fedcff]Antichrist[/color]"
+            text_size: self.size
+            font_size: 120
+            bold: True
+            markup: True
+            halign: "center"
+            valign: "middle"
+
+        MDTextField:
+            id: target
+            pos_hint: {"center_x": 0.5, "center_y": 0.6}
+            hint_text: "Phone number"
+            color_mode: 'custom'
+            line_color_focus: utils.get_color_from_hex("#fedcff")
+            line_color_normal: utils.get_color_from_hex("#fedcff")
+            size_hint_x: 0.8
+            on_touch_up: app.bufer(True, target)
+
+        MDFillRoundFlatButton:
+            id: menu_button
+            text: "Ultra"
+            md_bg_color: utils.get_color_from_hex("#fedcff")
+            text_color: utils.get_color_from_hex("#000000")
+            pos_hint: {"center_x": 0.2, "center_y": 0.5}
+            size_hint_x: 0.2
+            on_release: app.modes(menu_button)
+
+        MDFillRoundFlatButton:
+            id: button_attack_cancel
+            text: "Attack"
+            md_bg_color: utils.get_color_from_hex("#fedcff")
+            text_color: utils.get_color_from_hex("#000000")
+            size_hint_x: 0.3
+            pos_hint: {"center_x": 0.5, "center_y": 0.5}
+            on_release: app.attack(attack=target)
+
+        MDFillRoundFlatButton:
+            id: what_button
+            text: "Mix"
+            md_bg_color: utils.get_color_from_hex("#fedcff")
+            text_color: utils.get_color_from_hex("#000000")
+            pos_hint: {"center_x": 0.8, "center_y": 0.5}
+            size_hint_x: 0.2
+            on_release: app.whats(what_button)
+
+        MDLabel:
+            id: label
+            font_size: 65
+            bold: True
+            markup: True
+            halign: 'center'
+            pos_hint: {"center_x": 0.5, "center_y": 0.3}
+
+        MDTextButton:
+            id: link_tg
+            center_y_1: 0.2
+            font_size: 40
+            text: '[color=#fedcff]t.me/antichristone[/color]'
+            bold: True
+            markup: True
+            on_release: app.link()
+            pos_hint: {"center_x": 0.5, "center_y": self.center_y_1}
